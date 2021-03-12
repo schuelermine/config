@@ -5,8 +5,9 @@
 # 1.3 Custom behaviour
 # 1.4 Default programs
 # 2 Environment setups
-# 2.1 GHCup
-# 2.2 Deno
+# 2.1 Local binaries
+# 2.2 GHCup
+# 2.3 Deno
 
 #* 1: User-facing settings
 
