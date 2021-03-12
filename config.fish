@@ -140,14 +140,19 @@ set -gx VISUAL code-insiders -w
 
 #* 2: Environment setups
 
+#* 2.1: Local binaries
+
+fish_add_path $HOME/.local/bin
+
 #* 2.1: GHCup
 
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
-test -f /home/anselmschueler/.ghcup/env; and set -gx PATH $HOME/.cabal/bin /home/anselmschueler/.ghcup/bin $PATH
+set -q GHCUP_INSTALL_BASE_PREFIX[1]
+or set GHCUP_INSTALL_BASE_PREFIX $HOME
 
-set -gx PATH $HOME/.local/bin $PATH
+test -f /home/anselmschueler/.ghcup/env
+and fish_add_path $HOME/.cabal/bin /home/anselmschueler/.ghcup/bin
 
 #* 2.2 Deno
 
 set -gx DENO_INSTALL /home/anselmschueler/.deno
-set -gx PATH $DENO_INSTALL/bin $PATH
+fish_add_path $DENO_INSTALL/bin
