@@ -1,0 +1,1 @@
+/home/anselmschueler/.config/fish/config.fish
