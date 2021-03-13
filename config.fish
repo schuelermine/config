@@ -1,17 +1,43 @@
+#!/usr/bin/fish
+
 # CONTENTS:
-# 1 User-facing settings
-# 1.1 Shell look & feel
-# 1.2 Utility functions
-# 1.3 Custom behaviour
-# 1.4 Default programs
-# 2 Environment setups
-# 2.1 Local binaries
-# 2.2 GHCup
-# 2.3 Deno
+# 1 Environment setups
+# 1.1 Local binaries
+# 1.2 GHCup
+# 1.3 Deno
+# 1.4 Glamour
+# 2 User-facing settings
+# 2.1 Shell look & feel
+# 2.2 Utility functions
+# 2.3 Custom behaviour
+# 2.4 Default programs
 
-#* 1: User-facing settings
+#* 2: Environment setups
 
-#* 1.1: Shell look & feel
+#* 1.1: Local binaries
+
+fish_add_path $HOME/.local/bin
+
+#* 1.2: GHCup
+
+set -q GHCUP_INSTALL_BASE_PREFIX[1]
+or set GHCUP_INSTALL_BASE_PREFIX $HOME
+
+test -f /home/anselmschueler/.ghcup/env
+and fish_add_path $HOME/.cabal/bin /home/anselmschueler/.ghcup/bin
+
+#* 1.3 Deno
+
+set -gx DENO_INSTALL /home/anselmschueler/.deno
+fish_add_path $DENO_INSTALL/bin
+
+#* 1.4 Glamour
+
+set -gx GLAMOUR_STYLE dark
+
+#* 2: User-facing settings
+
+#* 2.1: Shell look & feel
 
 function fish_greeting
     switch "$USER"
@@ -55,7 +81,7 @@ function fish_prompt --description 'Write out the prompt'
     end
 end
 
-#* 1.2: Utility functions
+#* 2.2: Utility functions
 
 function ...
     if test "$argv[1]" != ""
@@ -120,7 +146,7 @@ function sesc --wraps=sed
     sed s/\x1b/␛/g $argv
 end
 
-#* 1.3: Custom behaviour
+#* 2.3: Custom behaviour
 
 function mv --wraps mv
     command mv --no-clobber $argv
@@ -134,26 +160,20 @@ function sl
     command sl -e $argv
 end
 
-#* 1.4: Default programs
+#* 2.4: Default programs
 
 set -gx EDITOR nano --atblanks --autoindent --cutfromcursor --historylog --indicator --linenumbers --mouse --positionlog --showcursor --smarthome --softwrap --suspendable --tabsize=4 --tabstospaces --zap
 set -gx VISUAL code-insiders -w
 
-#* 2: Environment setups
+#* 2.5 Editing this file
 
-#* 2.1: Local binaries
+set -l config_directory (
+    set -q XDG_CONFIG_HOME
+    and echo $XDG_CONFIG_HOME
+    or echo $HOME/.config
+)
+set -g fishrc $config_directory/fish/config.fish
 
-fish_add_path $HOME/.local/bin
-
-#* 2.1: GHCup
-
-set -q GHCUP_INSTALL_BASE_PREFIX[1]
-or set GHCUP_INSTALL_BASE_PREFIX $HOME
-
-test -f /home/anselmschueler/.ghcup/env
-and fish_add_path $HOME/.cabal/bin /home/anselmschueler/.ghcup/bin
-
-#* 2.2 Deno
-
-set -gx DENO_INSTALL /home/anselmschueler/.deno
-fish_add_path $DENO_INSTALL/bin
+function fishrcedit
+    $EDITOR $fishrc
+end
