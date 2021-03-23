@@ -6,6 +6,7 @@
 # 1.2 GHCup
 # 1.3 Deno
 # 1.4 Glamour
+# 1.5 .NET SDK
 # 2 User-facing settings
 # 2.1 Shell look & feel
 # 2.2 Utility functions
@@ -33,7 +34,11 @@ fish_add_path $DENO_INSTALL/bin
 
 #* 1.4 Glamour
 
-set -gx GLAMOUR_STYLE dark
+set -gx GLAMOUR_STYLE /home/anselmschueler/.config/glamour/dark.json
+
+#* 1.5 .NET SDK
+
+set -gx DOTNET_CLI_TELEMETRY_OPTOUT 1
 
 #* 2: User-facing settings
 
@@ -72,11 +77,11 @@ function fish_prompt --description 'Write out the prompt'
 
     switch "$USER"
         case root toor
-            echo ┌[(date +%H:%M:%S)] "$gray"[<><] "$root_color""$USER" "$path_color""$PWD" "$warning_color"["$oldstatus"]"$normal_color"
+            echo ┌[(date +%H:%M:%S)] "$gray"[fish] "$root_color""$USER" "$path_color""$PWD" "$warning_color"["$oldstatus"]"$normal_color"
             echo ╘\#" "
 
         case '*'
-            echo ┌[(date +%H:%M:%S)] "$gray"[<><] "$user_color""$USER" "$path_color""$PWD" "$warning_color"["$oldstatus"]"$normal_color"
+            echo ┌[(date +%H:%M:%S)] "$gray"[fish] "$user_color""$USER" "$path_color""$PWD" "$warning_color"["$oldstatus"]"$normal_color"
             echo └\$" "
     end
 end
