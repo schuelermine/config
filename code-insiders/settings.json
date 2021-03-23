@@ -1,0 +1,57 @@
+{
+    "workbench.iconTheme": "vs-nomo-dark",
+    "editor.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontLigatures": true,
+    "explorer.sortOrder": "type",
+    "editor.fontSize": 16,
+    "debug.console.fontSize": 16,
+    "markdown.preview.fontSize": 16,
+    "editor.acceptSuggestionOnEnter": "off",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "gitlens.defaultDateFormat": "dddd, DD. MMMM YYYY",
+    "gitlens.defaultTimeFormat": "HH:mm",
+    "gitlens.defaultDateShortFormat": "YYYY-MM-DD",
+    "editor.largeFileOptimizations": true,
+    "editor.renderWhitespace": "all",
+    "workbench.colorTheme": "dark-plus-syntax",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "telemetry.enableTelemetry": false,
+    "terminal.integrated.cursorStyle": "underline",
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "bash"
+        },
+        "zsh": {
+            "path": "zsh"
+        },
+        "fish": {
+            "path": "fish"
+        },
+        "tmux": {
+            "path": "tmux"
+        },
+        "pwsh": {
+            "path": "pwsh"
+        },
+        "ghci": {
+            "path": "ghci"
+        },
+        "jshell": {
+            "path": "jshell"
+        },
+        "deno": {
+            "path": "deno"
+        },
+        "node": {
+            "path": "node"
+        }
+    }
+}
