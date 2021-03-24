@@ -53,5 +53,14 @@
         "node": {
             "path": "node"
         }
-    }
+    },
+    "sonarlint.rules": {
+        "java:S106": {
+            "level": "off"
+        },
+        "Web:BoldAndItalicTagsCheck": {
+            "level": "off"
+        }
+    },
+    "workbench.sideBar.location": "right"
 }

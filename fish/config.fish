@@ -92,7 +92,7 @@ function ...
     if test "$argv[1]" != ""
         set depth "$argv[1]"
     else
-        set depth 1
+        set depth 2
     end
     for i in (seq $depth)
         cd ..
