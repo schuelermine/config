@@ -46,15 +46,15 @@ set -gx DOTNET_CLI_TELEMETRY_OPTOUT 1
 
 function fish_greeting
     switch "$USER"
-        case root toor
+        case root
             echo "Hello."
         case '*'
-            if command -v fortune >/dev/null
-                and command -v cowsay >/dev/null
-                and command -v lolcat >/dev/null
-                and cowsay -l | grep "duck" >/dev/null
-                fortune | cowsay -f duck | lolcat
-            end
+#            if command -v fortune >/dev/null
+#                and command -v cowsay >/dev/null
+#                and command -v lolcat >/dev/null
+#                and cowsay -l | grep "duck" >/dev/null
+                fortune | cowsay -f duck | lolcat -t
+#            end
             echo ""
             echo "Welcome to fish."
     end
@@ -76,7 +76,7 @@ function fish_prompt --description 'Write out the prompt'
     end
 
     switch "$USER"
-        case root toor
+        case root
             echo ┌[(date +%H:%M:%S)] "$gray"[fish] "$root_color""$USER" "$path_color""$PWD" "$warning_color"["$oldstatus"]"$normal_color"
             echo ╘\#" "
 

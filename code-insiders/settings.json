@@ -13,7 +13,7 @@
     "gitlens.defaultDateShortFormat": "YYYY-MM-DD",
     "editor.largeFileOptimizations": true,
     "editor.renderWhitespace": "all",
-    "workbench.colorTheme": "dark-plus-syntax",
+    "workbench.colorTheme": "BeardedTheme Black & Ruby",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "files.exclude": {
@@ -62,5 +62,7 @@
             "level": "off"
         }
     },
-    "workbench.sideBar.location": "right"
+    "workbench.sideBar.location": "right",
+    "terminal.integrated.fontSize": 16,
+    "powershell.integratedConsole.showOnStartup": false
 }
