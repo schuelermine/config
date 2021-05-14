@@ -49,12 +49,7 @@ function fish_greeting
         case root
             echo "Hello."
         case '*'
-#            if command -v fortune >/dev/null
-#                and command -v cowsay >/dev/null
-#                and command -v lolcat >/dev/null
-#                and cowsay -l | grep "duck" >/dev/null
-                fortune | cowsay -f duck | lolcat -t
-#            end
+            fortune | cowsay -f duck | lolcat -t
             echo ""
             echo "Welcome to fish."
     end
@@ -88,14 +83,40 @@ end
 
 #* 2.2: Utility functions
 
+function gzxh
+    if test (count $argv) = 0
+        return 1
+    end
+    set session (tmux new-session -d -P -F '#{session_name}' $argv[2])
+    for cmd in $argv[3..-1]
+        tmux split-window -t "$session:{start}.{bottom}" $cmd
+        if test $status != 0
+            tmux select-layout -t $session $argv[1]
+            tmux split-window -t "$session:{start}.{bottom}" $cmd
+        end
+    end
+    tmux select-layout -t $session $argv[1]
+    tmux attach -t $session
+end
+
+function capture-window
+    magick convert (xwd $argv[2..-1] | psub -s .xwd) png:- > $argv[1]
+end
+
 function ...
     if test "$argv[1]" != ""
         set depth "$argv[1]"
     else
         set depth 2
     end
+    set dest .
     for i in (seq $depth)
-        cd ..
+        set dest $dest/..
+    end
+    if isatty stdout
+        cd $dest
+    else
+        echo $dest
     end
 end
 
@@ -127,6 +148,10 @@ function lx --wraps ls
     ls -QRna $argv
 end
 
+function lf --wraps ls
+    ls --almost-all --classify --color=always --human-readable -l $argv
+end
+
 function mkdir+ --wraps mkdir
     mkdir $argv
     cd $argv[1]
@@ -151,6 +176,16 @@ function sesc --wraps=sed
     sed s/\x1b/␛/g $argv
 end
 
+function git-commit
+    set files $argv
+    if test (count $files) = 0
+        set files "."
+    end
+    git add $files
+    read --prompt-str (set_color green)"Commit message: "(set_color normal) message
+    git commit --message $message
+end
+
 #* 2.3: Custom behaviour
 
 function mv --wraps mv
@@ -161,8 +196,12 @@ function nano --wraps nano
     command nano --atblanks --autoindent --cutfromcursor --historylog --indicator --linenumbers --mouse --positionlog --showcursor --smarthome --softwrap --suspendable --tabsize=4 --tabstospaces --zap $argv
 end
 
-function sl
+function sl --wraps sl
     command sl -e $argv
+end
+
+function la --wraps ls
+    ls -AF $argv
 end
 
 #* 2.4: Default programs
@@ -182,3 +221,13 @@ set -g fishrc $config_directory/fish/config.fish
 function fishrcedit
     $EDITOR $fishrc
 end
+
+#* 2.6 Aliases
+
+function cls --wraps clear
+    clear $argv
+end
+
+# 2.7 Keybinds
+
+bind \b backward-kill-bigword

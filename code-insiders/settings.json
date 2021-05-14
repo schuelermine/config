@@ -1,5 +1,4 @@
 {
-    "workbench.iconTheme": "vs-nomo-dark",
     "editor.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontLigatures": true,
     "explorer.sortOrder": "type",
@@ -12,8 +11,7 @@
     "gitlens.defaultTimeFormat": "HH:mm",
     "gitlens.defaultDateShortFormat": "YYYY-MM-DD",
     "editor.largeFileOptimizations": true,
-    "editor.renderWhitespace": "all",
-    "workbench.colorTheme": "BeardedTheme Black & Ruby",
+    "workbench.colorTheme": "True Dark Github Theme",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "files.exclude": {
@@ -26,6 +24,9 @@
     "terminal.integrated.cursorStyle": "underline",
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.profiles.linux": {
+        "dash": {
+            "path": "dash"
+        },
         "bash": {
             "path": "bash"
         },
@@ -64,5 +65,14 @@
     },
     "workbench.sideBar.location": "right",
     "terminal.integrated.fontSize": 16,
-    "powershell.integratedConsole.showOnStartup": false
+    "powershell.integratedConsole.showOnStartup": false,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "javascript.format.semicolons": "insert",
+    "typescript.format.semicolons": "insert",
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false
 }
