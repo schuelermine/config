@@ -17,7 +17,9 @@
 
 #* 1.1: Local binaries
 
-fish_add_path $HOME/.local/bin
+fish_add_path $HOME/.local/bin/
+
+fish_add_path $HOME/Apps/
 
 #* 1.2: GHCup
 
@@ -38,6 +40,7 @@ set -gx GLAMOUR_STYLE /home/anselmschueler/.config/glamour/dark.json
 
 #* 1.5 .NET SDK
 
+fish_add_path $HOME/.dotnet
 set -gx DOTNET_CLI_TELEMETRY_OPTOUT 1
 
 #* 2: User-facing settings
@@ -141,15 +144,19 @@ function hd --wraps hd
 end
 
 function l+ --wraps ls
-    ls -AR $argv
+    ls --almost-all --recursive $argv
 end
 
-function lx --wraps ls
-    ls -QRna $argv
+function lq --wraps ls
+    ls --quote-name --recursive --numeric-uid-gid --all $argv
 end
 
 function lf --wraps ls
-    ls --almost-all --classify --color=always --human-readable -l $argv
+    ls -l --almost-all --classify --color=always --human-readable $argv
+end
+
+function lx --wraps ls
+    ls -l --almost-all --classify --author --group-directories-first --recursive $argv
 end
 
 function mkdir+ --wraps mkdir
@@ -230,4 +237,6 @@ end
 
 # 2.7 Keybinds
 
-bind \b backward-kill-bigword
+bind \b backward-kill-path-component
+
+bind \e\[3\;5~ kill-bigword
