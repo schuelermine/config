@@ -22,44 +22,20 @@
     "telemetry.enableTelemetry": false,
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.profiles.linux": {
-        "dash": {
-            "path": "dash"
-        },
-        "bash": {
-            "path": "bash"
-        },
-        "zsh": {
-            "path": "zsh"
-        },
-        "fish": {
-            "path": "fish"
-        },
-        "tmux": {
-            "path": "tmux"
-        },
-        "pwsh": {
-            "path": "pwsh"
-        },
-        "ghci": {
-            "path": "ghci"
-        },
-        "jshell": {
-            "path": "jshell"
-        },
-        "deno": {
-            "path": "deno"
-        },
-        "node": {
-            "path": "node"
-        }
+        "dash": { "path": "dash" },
+        "bash": { "path": "bash" },
+        "zsh": { "path": "zsh" },
+        "fish": { "path": "fish" },
+        "tmux": { "path": "tmux" },
+        "pwsh": { "path": "pwsh" },
+        "ghci": { "path": "ghci" },
+        "jshell": { "path": "jshell" },
+        "deno": { "path": "deno" },
+        "node": { "path": "node" }
     },
     "sonarlint.rules": {
-        "java:S106": {
-            "level": "off"
-        },
-        "Web:BoldAndItalicTagsCheck": {
-            "level": "off"
-        }
+        "java:S106": { "level": "off" },
+        "Web:BoldAndItalicTagsCheck": { "level": "off" }
     },
     "terminal.integrated.fontSize": 16,
     "powershell.integratedConsole.showOnStartup": false,
