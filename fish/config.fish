@@ -54,7 +54,7 @@ function fish_greeting
         case '*'
             fortune | cowsay -f duck | lolcat -t
             echo ""
-            echo "Welcome to fish."
+            echo "Welcome to fish!"
     end
 end
 
@@ -191,6 +191,38 @@ function git-commit
     git add $files
     read --prompt-str (set_color green)"Commit message: "(set_color normal) message
     git commit --message $message
+end
+
+function mv-into-no-clobber-verbose
+    argparse -i -s f/flat -- $argv
+    set fail_count 0
+    set file_list $argv[1..-2]
+    set file_count (count $file_list)
+    for file_path in $file_list
+        if test -n "$_flag_flat" -a -d $file_path
+            echo "Skipping $file_path because it is a directory" 1>&2
+            continue
+        end
+        set file_name (basename $file_path)
+        set dest_path $argv[-1]/$file_name
+        if test -e $dest_path
+            echo "Failed to move $file_path." 1>&2
+            echo "The file $file_name already exists in the destination folder." 1>&2
+            set fail_count (math 1 + $fail_count)
+        else
+            mv $file_path $dest_path
+            and echo "Moved $file_path to $dest_path."
+            or begin
+                echo "Failed to move $file_path to $dest_path." 1>&2
+                echo "An unexpected error occured in mv execution." 1>&2
+                set fail_count (math 1 + $fail_count)
+            end
+        end
+    end
+    set move_count (math $file_count - $fail_count)
+    echo "Successfully moved $move_count out of $file_count files."
+    echo "Failed to move $fail_count files." 1>&2
+    return $fail_count
 end
 
 #* 2.3: Custom behaviour
