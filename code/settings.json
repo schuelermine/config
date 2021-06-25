@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "'Cascadia Code PL', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontLigatures": true,
     "explorer.sortOrder": "type",
     "editor.fontSize": 16,
@@ -11,7 +11,7 @@
     "gitlens.defaultTimeFormat": "HH:mm",
     "gitlens.defaultDateShortFormat": "YYYY-MM-DD",
     "editor.largeFileOptimizations": true,
-    "editor.suggestSelection": "recentlyUsedByPrefix",
+    "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "files.exclude": {
         "**/.classpath": true,
@@ -34,26 +34,28 @@
         "node": { "path": "node" }
     },
     "sonarlint.rules": {
-        "java:S106": { "level": "off" },
-        "Web:BoldAndItalicTagsCheck": { "level": "off" }
+        "java:S106": {
+            "level": "off"
+        },
+        "Web:BoldAndItalicTagsCheck": {
+            "level": "off"
+        },
+        "java:S117": {
+            "level": "off"
+        }
     },
     "terminal.integrated.fontSize": 16,
-    "powershell.integratedConsole.showOnStartup": false,
     "editor.acceptSuggestionOnCommitCharacter": false,
     "javascript.format.semicolons": "insert",
     "typescript.format.semicolons": "insert",
-    "[typescript]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
     "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
-    "security.workspace.trust.emptyWindow": true,
     "security.workspace.trust.untrustedFiles": "newWindow",
     "csharp.showOmnisharpLogOnError": false,
-    "editor.codeLensFontFamily": "'Cascadia Code'",
+    "editor.codeLensFontFamily": "'Cascadia Code PL'",
     "editor.comments.ignoreEmptyLines": false,
-    "editor.inlayHints.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.inlayHints.fontFamily": "'Cascadia Code PL', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.linkedEditing": true,
     "editor.maxTokenizationLineLength": 40000,
     "editor.renderControlCharacters": true,
@@ -62,7 +64,6 @@
     "editor.tabCompletion": "on",
     "editor.unfoldOnClickAfterEndOfLine": true,
     "editor.wrappingStrategy": "advanced",
-    "editor.cursorBlinking": "solid",
     "editor.cursorSurroundingLines": 2,
     "editor.find.autoFindInSelection": "multiline",
     "diffEditor.codeLens": true,
@@ -94,17 +95,14 @@
     "window.titleBarStyle": "custom",
     "window.title": "${activeEditorShort}${separator}${rootName}${separator}${remoteName}${separator}VS Code",
     "window.titleSeparator": " · ",
-    "js/ts.implicitProjectConfig.checkJs": true,
     "explorer.incrementalNaming": "smart",
     "explorer.sortOrderLexicographicOptions": "unicode",
     "search.collapseResults": "auto",
     "search.quickOpen.includeSymbols": true,
     "search.searchEditor.defaultNumberOfContextLines": 2,
     "search.showLineNumbers": true,
-    "debug.console.fontFamily": "'Cascadia Code'",
+    "debug.console.fontFamily": "'Cascadia Code PL'",
     "workbench.iconTheme": "vs-nomo-dark",
-    "workbench.colorTheme": "Default High Contrast",
-    "editor.cursorStyle": "block-outline",
     "terminal.integrated.cursorStyle": "underline",
     "githubIssues.queries": [
         {
@@ -133,5 +131,13 @@
             "label": "PRs Here By Me",
             "query": "author:${user} repo:${owner}/${repository}"
         }
-    ]
+    ],
+    "powershell.codeFormatting.useCorrectCasing": true,
+    "powershell.integratedConsole.focusConsoleOnExecute": false,
+    "powershell.integratedConsole.showOnStartup": false,
+    "workbench.colorTheme": "GitHub Dark Default",
+    "[csharp]": {
+        
+    },
+    "workbench.editor.untitled.hint": "hidden"
 }
